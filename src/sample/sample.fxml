@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane alignment="CENTER" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Controller">
+  <children>
+    <ToolBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="TOP">
+      <items>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="750.0">
+          <children>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#decode" prefHeight="50.0" prefWidth="194.0" text="Раскодировать" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="-15.0" AnchorPane.topAnchor="20.0" />
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#encode" prefHeight="50.0" prefWidth="188.0" text="Закодировать" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="257.5" AnchorPane.rightAnchor="257.5" AnchorPane.topAnchor="20.0" />
+            <Label layoutX="86.0" layoutY="25.0" text="Ключевое слово" />
+            <TextField id="key" fx:id="keyWord" layoutX="32.0" layoutY="41.0" prefWidth="200.0" />
+            <Button id="testKasiski" layoutX="-5.0" layoutY="76.0" mnemonicParsing="false" onAction="#testKasiski" prefWidth="196.0" text="Тест Касиски" />
+          </children>
+        </AnchorPane>
+      </items>
+    </ToolBar>
+    <SplitPane dividerPositions="0.2543859649122807" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+      <items>
+        <AnchorPane maxHeight="-1.0" maxWidth="-Infinity" minHeight="-1.0" minWidth="-Infinity" prefHeight="-1.0" prefWidth="200.0">
+          <children>
+            <TitledPane animated="false" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="203.0" prefHeight="498.0" prefWidth="203.0" text="Анализ по Касиски" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+                  <children>
+                    <TableView fx:id="tableView" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" pickOnBounds="false" prefHeight="430.0" prefWidth="199.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <columns>
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="59.0" text="L-грамм" fx:id="lGram" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="81.0" text="Расстояния" fx:id="distances" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="55.0" text="НОД" fx:id="gcd" />
+                      </columns>
+                    </TableView>
+                    <Label layoutX="14.0" layoutY="442.0" text="Длина ключевого слова:" />
+                    <Label fx:id="keyWordLength" layoutX="157.0" layoutY="442.0" prefWidth="28.0" text="" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" text="Закодированный текст" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <AnchorPane id="Content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="265.0">
+                  <children>
+                    <TextArea fx:id="encodeText" editable="false" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="468.0" prefWidth="200.0" wrapText="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="32.5" AnchorPane.rightAnchor="32.5" AnchorPane.topAnchor="0.0" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" text="Раскодированный текст" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <AnchorPane id="Content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="265.0">
+                  <children>
+                    <TextArea fx:id="decodeText" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="468.0" prefWidth="196.0" wrapText="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="1.0" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane id="originalText" animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" text="Исходный текст" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <AnchorPane id="Content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="265.0">
+                  <children>
+                    <TextArea fx:id="originalText" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="468.0" prefWidth="200.0" wrapText="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="32.5" AnchorPane.rightAnchor="32.5" AnchorPane.topAnchor="0.0" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+  </columnConstraints>
+  <padding>
+    <Insets />
+  </padding>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>
